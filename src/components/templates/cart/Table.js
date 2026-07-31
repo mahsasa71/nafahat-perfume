@@ -130,7 +130,7 @@ const Table = ({ user }) => {
 
         if (!user) {
             showSwal("لطفاً ابتدا وارد شوید", "warning", "ورود");
-            return router.push("/login-register");
+            return router.push("/login");
         }
 
         const res = await fetch("/api/orders", {
