@@ -77,7 +77,7 @@ const Sms = ({ hideOtpForm, phone, type }) => {
             لطفاً کد تأیید ارسال شده را تایپ کنید
           </span>
 
-          <span className={styles.number}>{phone}</span>
+          <span className="font-bold text-white block text-center mt-2 text-xl">{phone}</span>
 
           <input
             className="w-full px-4 py-2 border border-orange-300 rounded-lg text-left placeholder:text-white focus:ring-2 focus:ring-orange-300 focus:outline-none bg-transparent text-white"

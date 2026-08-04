@@ -888,12 +888,20 @@ swal({
              </span>
           </div>
         </div>
-        <button 
+        {/* <button 
           onClick={goToPayment}
           className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3.5 rounded-xl font-DanaMedium transition-colors"
         >
           ادامه فرایند خرید
-        </button>
+        </button> */}
+
+        <Link
+  href="/cart"
+  onClick={() => setMobileCartOpen(false)}
+  className="block text-center w-full bg-teal-600 hover:bg-teal-700 text-white py-3.5 rounded-xl font-DanaMedium transition-colors"
+>
+  ادامه فرایند خرید
+</Link>
       </div>
     </>
   ) : (
