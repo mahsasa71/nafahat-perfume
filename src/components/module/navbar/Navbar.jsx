@@ -690,7 +690,8 @@ swal({
           <div className="flex flex-col">
         <div 
           className="flex items-center justify-between hover:text-orange-300 transition-colors cursor-pointer"
-          onClick={() => setIswarmMenuOpen(!isbitterMenuOpen)} // با کلیک باز و بسته می‌شود
+   
+          onClick={() => setIsbitterMenuOpen(!isbitterMenuOpen)}
         >
           <span className="font-DanaMedium">تلخ</span>
           <svg 
@@ -702,7 +703,7 @@ swal({
         </div>
 
      
-        <div className={`flex flex-col gap-y-3 mt-3 pr-4 text-sm text-gray-500 dark:text-gray-400 overflow-hidden transition-all ${iswarmMenuOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
+        <div className={`flex flex-col gap-y-3 mt-3 pr-4 text-sm text-gray-500 dark:text-gray-400 overflow-hidden transition-all ${ isbitterMenuOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
           <Link href="/category?suitableFor=women" onClick={() => setMobileNavOpen(false)}>همه محصولات</Link>
           <Link href="/category?suitableFor=women&type=تلخ" onClick={() => setMobileNavOpen(false)}>زنانه</Link>
           <Link href="/category?suitableFor=men&type=تلخ" onClick={() => setMobileNavOpen(false)}>مردانه</Link>
