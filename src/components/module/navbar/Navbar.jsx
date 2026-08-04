@@ -252,13 +252,19 @@ swal({
 </div>
             <ul className="flex items-center h-full gap-x-3 lg:gap-x-9 text-sm xl:text-xl text-nowrap text-gray-300 tracking-tightest *:leading-[56px]">
               <li>
-                <a
+                {/* <a
                   href="#"
                   onClick={preventLink}
                   className="font-medium text-orange-200"
                 >
                   صفحه اصلی
-                </a>
+                </a> */}
+                <Link
+  href="/"
+  className="font-medium text-orange-200"
+>
+  صفحه اصلی
+</Link>
               </li>
               <li className="relative group">
                 <a
@@ -639,7 +645,7 @@ swal({
           </div>
         </div>
 
-        <a
+        {/* <a
           href="#"
           className="flex items-center gap-x-2 bg-orange-200/20 text-orange-300 pr-2.5 h-10 rounded-md mb-4"
           onClick={preventLink}
@@ -648,9 +654,15 @@ swal({
             <use href="#home"></use>
           </svg>
           <span>صفحه اصلی</span>
-        </a>
+        </a> */}
 
-
+<Link
+  href="/"
+  onClick={() => setMobileNavOpen(false)}
+  className="flex items-center gap-x-2"
+>
+  صفحه اصلی
+</Link>
 <ul className=":pr-2.5 space-y-6 text-zinc-600 dark:text-white">
   <li>
     <div className="flex items-center justify-between cursor-pointer" >
