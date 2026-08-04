@@ -5,6 +5,8 @@ import ProductModel from "@/models/Product";
 import { authUser } from "@/utils/serverHelpers";
 import { NextResponse } from "next/server";
 import moment from "moment-jalaali";
+import { sendTelegramMessage } from "@/lib/telegram";
+import { checkInventory } from "@/lib/inventory";
 
 // ۱. متد ثبت سفارش و کسر نهایی از انبار
 export async function POST(req) {
@@ -30,11 +32,24 @@ export async function POST(req) {
         }
 
         // کسر از انبار
-        for (const item of items) {
-            await ProductModel.findByIdAndUpdate(item.id || item._id, {
-                $inc: { inventory: -item.count }
-            });
-        }
+        // for (const item of items) {
+        //     await ProductModel.findByIdAndUpdate(item.id || item._id, {
+        //         $inc: { inventory: -item.count }
+        //     });
+        // }
+
+for (const item of items) {
+
+    await ProductModel.findByIdAndUpdate(item.id || item._id, {
+        $inc: { inventory: -item.count }
+    });
+
+    await checkInventory(item.id || item._id);
+
+}
+
+
+
 
         const randomOrderID = Math.floor(1000 + Math.random() * 9000);
         const persianDate = moment().format("jYYYY/jMM/jDD - HH:mm");
@@ -48,6 +63,48 @@ export async function POST(req) {
             createdAt: persianDate,
             status: "pending"
         });
+console.log("Sending telegram message...");
+const productsMessage = items
+  .map(
+    (item, index) => `
+${index + 1}. ${item.name}
+
+🔹 تعداد: ${item.count}
+🔹 قیمت واحد: ${item.price.toLocaleString()} تومان
+🔹 جمع: ${(item.price * item.count).toLocaleString()} تومان
+`
+  )
+  .join("\n");
+
+await sendTelegramMessage(`
+🛒 <b>سفارش جدید</b>
+
+━━━━━━━━━━━━━━
+
+🆔 <b>شماره سفارش:</b>
+${randomOrderID}
+
+👤 <b>مشتری:</b>
+${user.username || user.name}
+${user.username || user.name}
+
+📱 <b>تلفن:</b>
+${user.phone}
+
+━━━━━━━━━━━━━━
+
+📦 <b>محصولات سفارش</b>
+
+${productsMessage}
+
+━━━━━━━━━━━━━━
+
+💰 <b>مبلغ کل:</b>
+${totalPrice.toLocaleString()} تومان
+
+📅 <b>تاریخ:</b>
+${persianDate}
+`);
 
         return NextResponse.json({ message: "سفارش ثبت شد", orderID: randomOrderID }, { status: 201 });
     } catch (error) {
