@@ -1,6 +1,8 @@
 services:
-
   app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: nafahat:latest
     container_name: nafahat-app
 

@@ -32,7 +32,8 @@ export async function POST(req) {
         const imgPath = path.join(process.cwd(), "public/uploads/" + filename);
 
         await writeFile(imgPath, buffer);
-        imagesUrls.push(`/uploads/${filename}`);
+        // imagesUrls.push(`/uploads/${filename}`);
+        imagesUrls.push(`/api/uploads/${filename}`);
       }
     }
 

@@ -42,7 +42,8 @@ export async function PUT(req, { params }) {
 
           await writeFile(imgPath, buffer);
 
-          imagesUrls.push(`/uploads/${filename}`);
+          // imagesUrls.push(`/uploads/${filename}`);
+          imagesUrls.push(`/api/uploads/${filename}`);
         }
       }
     }
