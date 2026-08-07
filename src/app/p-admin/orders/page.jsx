@@ -6,6 +6,7 @@ import React from "react";
 import connectToDB from "@/configs/db";
 import OrderModel from "@/models/Order";
 import { authUser } from "@/utils/serverHelpers";
+export const dynamic = "force-dynamic";
 
 const page = async () => {
   await connectToDB();

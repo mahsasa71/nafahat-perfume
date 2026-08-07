@@ -1,0 +1,26 @@
+services:
+  app:
+    image: nafahat:latest
+    container_name: nafahat-app
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/nafahat
+    depends_on:
+      - mongo
+    volumes:
+      - nafahat-uploads:/app/public/uploads
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:latest
+    container_name: nafahat-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - nafahat-mongodb:/data/db
+    restart: unless-stopped
+
+volumes:
+  nafahat-mongodb:
+  nafahat-uploads:

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev ",
     "build": "next build",
-    "start": "next start -p 8538"
+"start": "next start"
   },
   "dependencies": {
     "aos": "^2.3.4",

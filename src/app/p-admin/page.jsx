@@ -10,8 +10,9 @@ import styles from '@/app/p-admin/index.module.css'
 import connectToDB from "@/configs/db";
 import SaleChart from "@/components/templates/p-admin/index/SaleChart";
 import GrowthChart from "@/components/templates/p-admin/index/GrowthChart";
+export const dynamic = "force-dynamic";
 export default async function MainPage() {
-      connectToDB();
+    await connectToDB();
   const tickets = await TicketModel.find({}).lean();
   const users = await UserModel.find({}).lean();
   const products = await ProductModel.find({}).lean();

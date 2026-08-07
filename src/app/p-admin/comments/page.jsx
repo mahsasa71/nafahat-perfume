@@ -5,13 +5,18 @@ import Table from "@/app/p-admin/comments/Table";
 import connectToDB from "@/configs/db";
 import CommentModel from "@/models/Comment";
 
+export const dynamic = "force-dynamic";
+
+
 const page = async () => {
-  connectToDB();
+
+  await connectToDB();
+
   const comments = await CommentModel.find({})
     .sort({ _id: -1 })
-    // .populate("user")
     .populate("productID")
     .lean();
+
 
   return (
     <Layout>
@@ -28,5 +33,6 @@ const page = async () => {
     </Layout>
   );
 };
+
 
 export default page;

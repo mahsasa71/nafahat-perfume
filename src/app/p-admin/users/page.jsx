@@ -4,9 +4,9 @@ import Layout from "@/components/layout/AdminPanelLayout";
 import Table from "@/app/p-admin/users/Table";
 import connectToDB from "@/configs/db";
 import UserModel from "@/models/User";
-
+export const dynamic = "force-dynamic";
 const page = async () => {
-  connectToDB();
+  await connectToDB();
   const users = await UserModel.find({}).lean();
 
   return (

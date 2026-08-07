@@ -4,7 +4,7 @@ import connectToDB from "@/configs/db";
 import ProductModel from "@/models/Product";
 import ProductManager from "@/components/templates/p-admin/products/ProductManager";
 
-
+export const dynamic = "force-dynamic";
 const Page = async () => {
   await connectToDB();
 

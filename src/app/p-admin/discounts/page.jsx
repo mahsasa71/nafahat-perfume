@@ -4,9 +4,9 @@ import styles from "@/app/p-admin/discounts/table.module.css";
 import connectToDB from "@/configs/db";
 import DiscountModel from "@/models/Discount";
 import AddDiscount from "@/app/p-admin/discounts/AddDiscount";
-
+export const dynamic = "force-dynamic";
 const Discounts = async () => {
-  connectToDB();
+await connectToDB();
   const discounts = await DiscountModel.find({}).sort({ _id: -1 }).lean();
 
   return (

@@ -5,9 +5,9 @@ import styles from "@/app/p-admin/tickets/table.module.css";
 import Table from "@/app/p-admin/tickets/Table";
 import connectToDB from "@/configs/db";
 import TicketModel from "@/models/Ticket";
-
+export const dynamic = "force-dynamic";
 const page = async () => {
-  connectToDB();
+  await connectToDB();
   const tickets = await TicketModel.find({ isAnswer: false })
     .sort({ _id: -1 })
     .populate("user")
